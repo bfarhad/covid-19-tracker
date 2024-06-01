@@ -17,19 +17,19 @@ jobs:
       inputs:
         target: apk
         projectDirectory: $(projectDirectory)
-    - task: AndroidSigning@3
-      inputs:
-        apkFiles: '**/*.apk'
-        apksign: false
-    
     # - task: AndroidSigning@3
-    #   displayName: 'Signing and aligning APK file(s) **/*.apk'
     #   inputs:
     #     apkFiles: '**/*.apk'
-    #     apksignerKeystoreFile: 'key.jks'
-    #     apksignerKeystorePassword: '$(keypassword)'
-    #     apksignerKeystoreAlias: '$(key)'
-    #     apksignerKeyPassword: '$(keypassword)'
+    #     apksign: false
+    
+    - task: AndroidSigning@3
+      displayName: 'Signing and aligning APK file(s) **/*.apk'
+      inputs:
+        apkFiles: '**/*.apk'
+        apksignerKeystoreFile: '$(Agent.TempDirectory)/key.jks'
+        apksignerKeystorePassword: '$(keypassword)'
+        apksignerKeystoreAlias: '$(key)'
+        apksignerKeyPassword: '$(keypassword)'
     - task: CopyFiles@2
       inputs:
         contents: '**/*.apk'
