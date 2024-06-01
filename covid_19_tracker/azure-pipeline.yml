@@ -26,7 +26,7 @@ jobs:
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
         apkFiles: '**/*.apk'
-        apksignerKeystoreFile: '$(System.DefaultWorkingDirectory)/covid_19_tracker/key.jks'
+        apksignerKeystoreFile: './covid_19_tracker/key.jks'
         apksignerKeystorePassword: '$(keypassword)'
         apksignerKeystoreAlias: '$(key)'
         apksignerKeyPassword: '$(keypassword)'
