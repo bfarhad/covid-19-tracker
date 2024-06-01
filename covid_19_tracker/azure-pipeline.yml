@@ -22,7 +22,7 @@ jobs:
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
         apkFiles: '**/*.apk'
-        apksignerKeystoreFile: '././key.jks'
+        apksignerKeystoreFile: './key.jks'
         apksignerKeystorePassword: '$(keypassword)'
         apksignerKeystoreAlias: '$(key)'
         apksignerKeyPassword: '$(keypassword)'
