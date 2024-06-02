@@ -16,8 +16,9 @@ jobs:
     
     - task: FlutterBuild@0
       inputs:
-        target: apk
-        projectDirectory: $(projectDirectory)
+        target: 'apk'
+        projectDirectory: '$(projectDirectory)'
+        buildNumber: '$(BuildID)'
     
     - task: DownloadSecureFile@1
       name: key
