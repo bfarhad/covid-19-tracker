@@ -22,6 +22,12 @@ jobs:
     #     apkFiles: '**/*.apk'
     #     apksign: false
     
+    - task: DownloadSecureFile@1
+      name: key
+      displayName: Download signing key
+      inputs:
+        secureFile: 'key.jks'
+
     - task: AndroidSigning@3
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
