@@ -18,7 +18,7 @@ jobs:
       inputs:
         target: 'apk'
         projectDirectory: '$(projectDirectory)'
-        buildNumber: '$(BuildID)'
+        buildNumber: '$(Build.BuildId)'
     
     - task: DownloadSecureFile@1
       name: key
