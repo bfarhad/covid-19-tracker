@@ -1,6 +1,7 @@
 # Flutter build
 variables:
   projectDirectory: 'covid_19_tracker'
+  name: $(BuildID)
 trigger:
 - master
 jobs:
