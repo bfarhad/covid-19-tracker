@@ -15,10 +15,16 @@ jobs:
       inputs:
         secureFile: 'key.jks'
         
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          sudo apt-get install fastjar
+          
     - task: FlutterInstall@0
       displayName: "Install Flutter SDK"
       inputs:
-        mode: 'auto'
         channel: 'stable'
         version: 'latest'
 
