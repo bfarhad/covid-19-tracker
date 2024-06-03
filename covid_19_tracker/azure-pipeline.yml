@@ -7,8 +7,14 @@ trigger:
 jobs:
   - job: Android
     pool:
-      vmImage: 'macOS-latest'
+      vmImage: 'ubuntu-latest'
     steps:
+    - task: DownloadSecureFile@1
+      name: key
+      displayName: Download signing key
+      inputs:
+        secureFile: 'key.jks'
+        
     - task: FlutterInstall@0
       inputs:
         channel: 'stable'
@@ -19,13 +25,13 @@ jobs:
         target: 'apk'
         projectDirectory: '$(projectDirectory)'
         buildNumber: '$(Build.BuildId)'
-    
-    - task: DownloadSecureFile@1
-      name: key
-      displayName: Download signing key
+        
+    - task: FlutterTest@0
+      displayName: "Run unit tests"
       inputs:
-        secureFile: 'key.jks'
-
+        generateCodeCoverageReport: true
+        projectDirectory: '$(Build.SourcesDirectory)'
+        
     - task: AndroidSigning@3
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
@@ -34,8 +40,10 @@ jobs:
         apksignerKeystorePassword: '$(keypassword)'
         apksignerKeystoreAlias: '$(key)'
         apksignerKeyPassword: '$(keypassword)'
+        
     - task: CopyFiles@2
       inputs:
         contents: '**/*.apk'
         targetFolder: '$(build.artifactStagingDirectory)'
+        
     - task: PublishBuildArtifacts@1
