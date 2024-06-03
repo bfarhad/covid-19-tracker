@@ -16,9 +16,16 @@ jobs:
         secureFile: 'key.jks'
         
     - task: FlutterInstall@0
+      displayName: "Install Flutter SDK"
       inputs:
         channel: 'stable'
         version: 'latest'
+
+    - task: FlutterCommand@0
+      displayName: "Run Flutter diagnostics"
+      inputs:
+        projectDirectory: '$(projectDirectory)'
+        arguments: 'doctor -v'
     
     - task: FlutterBuild@0
       inputs:
@@ -29,8 +36,8 @@ jobs:
     - task: FlutterTest@0
       displayName: "Run unit tests"
       inputs:
-        generateCodeCoverageReport: true
-        projectDirectory: '$(Build.SourcesDirectory)'
+        projectDirectory: '$(projectDirectory)'
+        testName: 'coverage_test'
         
     - task: AndroidSigning@3
       displayName: 'Signing and aligning APK file(s) **/*.apk'
