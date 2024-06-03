@@ -22,7 +22,7 @@ jobs:
 
     - task: FlutterBuild@0
       inputs:
-        target: 'apk'
+        target: 'aab'
         projectDirectory: '$(projectDirectory)'
         buildNumber: '$(Build.BuildId)'
     
