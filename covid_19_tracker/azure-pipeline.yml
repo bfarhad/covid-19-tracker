@@ -22,10 +22,10 @@ jobs:
           # Write your commands here
           sudo apt-get install fastjar
           wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.1-stable.tar.xz
-          tar -xf ./flutter_linux_3.22.1-stable.tar.xz  -C /usr/bin/
-          echo $SHELL
-          echo $0
-          echo 'export PATH="$HOME/development/flutter/bin:$PATH"' >> ~/.bash_profile
+          sudo tar -xf ./flutter_linux_3.22.1-stable.tar.xz  -C /usr/bin/
+          sudo echo $SHELL
+          sudo echo $0
+          sudo echo 'export PATH="$HOME/development/flutter/bin:$PATH"' >> ~/.bash_profile
           
     # - task: FlutterInstall@0
     #   displayName: "Install Flutter SDK"
