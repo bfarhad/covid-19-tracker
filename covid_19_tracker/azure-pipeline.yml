@@ -18,6 +18,7 @@ jobs:
     - task: FlutterInstall@0
       displayName: "Install Flutter SDK"
       inputs:
+        mode: 'auto'
         channel: 'stable'
         version: 'latest'
 
