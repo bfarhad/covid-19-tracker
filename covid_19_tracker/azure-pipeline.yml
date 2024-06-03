@@ -21,12 +21,17 @@ jobs:
         script: |
           # Write your commands here
           sudo apt-get install fastjar
+          wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.22.1-stable.tar.xz
+          tar -xf ./flutter_linux_3.22.1-stable.tar.xz  -C /usr/bin/
+          echo $SHELL
+          echo $0
+          echo 'export PATH="$HOME/development/flutter/bin:$PATH"' >> ~/.bash_profile
           
-    - task: FlutterInstall@0
-      displayName: "Install Flutter SDK"
-      inputs:
-        channel: 'stable'
-        version: 'latest'
+    # - task: FlutterInstall@0
+    #   displayName: "Install Flutter SDK"
+    #   inputs:
+    #     channel: 'stable'
+    #     version: 'latest'
 
     - task: FlutterCommand@0
       displayName: "Run Flutter diagnostics"
